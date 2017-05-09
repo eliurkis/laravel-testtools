@@ -126,7 +126,7 @@ var App = new Vue({
             var result = '';
             if (val) {
               val.forEach(function(attribute, key){
-                  if (key === 0 && faker === true) {
+                  if (key === (val.length - 1) && faker === true) {
                     result += ""+attribute+", ";
                   } else {
                     result += "'"+helper.addslashes(attribute)+"', ";

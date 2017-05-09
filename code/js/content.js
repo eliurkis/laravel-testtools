@@ -281,7 +281,7 @@ chrome.extension.onRequest.addListener(function(request) {
         App.steps.push({
           'method': 'type',
           'faker': true,
-          'args': ['$this->faker->'+request.type, $(clickedEl).attr("name")]
+          'args': [$(clickedEl).attr("name"), '$this->faker->'+request.type]
         });
     }
 

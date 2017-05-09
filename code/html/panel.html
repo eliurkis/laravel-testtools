@@ -70,6 +70,7 @@ use Tests\DuskTestCase;
 class %CLASSNAME% extends DuskTestCase
 {
 %ENABLED_TRAITS%%FAKER%
+
     /**
      * My test implementation
      */
@@ -77,7 +78,7 @@ class %CLASSNAME% extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 <template v-for="step in steps">
-  <template v-if="! step.faker && ! step.custom">{{indent}}{{indent}}$browser->{{ step.method }}({{ step.args | implode }});<template v-if="$index+1 < steps.length">{{linebreak}}</template></template><template v-if="step.faker">{{indent}}{{indent}}$this->{{ step.method }}({{ step.args | implode true }});<template v-if="$index+1 < steps.length">{{linebreak}}</template></template><template v-if="step.custom">{{indent}}{{indent}}{{ step.action }};<template v-if="$index+1 < steps.length">{{linebreak}}</template></template>
+  <template v-if="! step.faker && ! step.custom">{{indent}}{{indent}}$browser->{{ step.method }}({{ step.args | implode }});<template v-if="$index+1 < steps.length">{{linebreak}}</template></template><template v-if="step.faker">{{indent}}{{indent}}$browser->{{ step.method }}({{ step.args | implode true }});<template v-if="$index+1 < steps.length">{{linebreak}}</template></template><template v-if="step.custom">{{indent}}{{indent}}{{ step.action }};<template v-if="$index+1 < steps.length">{{linebreak}}</template></template>
 </template>
         });
     }
