@@ -33,7 +33,7 @@ var App = new Vue({
         indent: "        ",
         steps: [],
         message: '',
-        namespace: '',
+        namespace: 'Tests\\Browser',
         className: 'ExampleTest',
         testName: helper.ucfirst(faker.company.catchPhraseNoun().replace('-','').replace(' ','')) + 'Is' + helper.ucfirst(faker.commerce.productAdjective().replace('-','')),
         recording: false,
@@ -185,7 +185,7 @@ var App = new Vue({
             .text()
             .replace('%TESTNAME%', self.testName)
             .replace('%CLASSNAME%', self.className)
-            .replace('%NAMESPACE%', (self.namespace !== '') ? 'namespace ' + self.namespace + ';' + "\n" : '' )
+            .replace('%NAMESPACE%', 'namespace ' + (self.namespace !== '' ? self.namespace : "Tests\\Browser") + ";\n")
             .replace('%CLASS_USE_STATEMENTS%', self.useStatements)
             .replace('%ENABLED_TRAITS%', self.enabledTraits)
             .replace('%FAKER%', this.hasFaker ? fakerText : '' )
