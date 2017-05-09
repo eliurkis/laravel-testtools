@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "Laravel TestTools",
-  "description": "Create Laravel integration tests while surfing your website.",
+  "name": "Laravel Dusk TestTools",
+  "description": "Create Laravel Dusk integration tests while surfing your website.",
   "version": "0.1.2",
   "devtools_page": "html/devtools.html",
   "content_scripts": [

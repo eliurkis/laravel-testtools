@@ -10,7 +10,7 @@ backgroundPageConnection.postMessage({
     tabId: chrome.devtools.inspectedWindow.tabId
 });
 
-chrome.devtools.panels.create("Laravel TestTools", null, "../html/panel.html", function(extensionPanel) {
+chrome.devtools.panels.create("Laravel Dusk TestTools", null, "../html/panel.html", function(extensionPanel) {
     var _window;
     var steps;
 

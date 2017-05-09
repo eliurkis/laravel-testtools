@@ -63,8 +63,11 @@
         <code id="testcode" class="hljs php"></code>
       </pre>
       <code id="steps" style="display:none;">
-%NAMESPACE%%CLASS_USE_STATEMENTS%
-class %CLASSNAME% extends TestCase
+%NAMESPACE%
+use Laravel\Dusk\Browser;
+use Tests\DuskTestCase;
+%CLASS_USE_STATEMENTS%
+class %CLASSNAME% extends DuskTestCase
 {
 %ENABLED_TRAITS%%FAKER%
     /**
@@ -72,9 +75,11 @@ class %CLASSNAME% extends TestCase
      */
     public function test%TESTNAME%()
     {
+        $this->browse(function (Browser $browser) {
 <template v-for="step in steps">
-  <template v-if="! step.faker && ! step.custom">{{indent}}$this->{{ step.method }}({{ step.args | implode }});<template v-if="$index+1 < steps.length">{{linebreak}}</template></template><template v-if="step.faker">{{indent}}$this->{{ step.method }}({{ step.args | implode true }});<template v-if="$index+1 < steps.length">{{linebreak}}</template></template><template v-if="step.custom">{{indent}}{{ step.action }};<template v-if="$index+1 < steps.length">{{linebreak}}</template></template>
+  <template v-if="! step.faker && ! step.custom">{{indent}}{{indent}}$browser->{{ step.method }}({{ step.args | implode }});<template v-if="$index+1 < steps.length">{{linebreak}}</template></template><template v-if="step.faker">{{indent}}{{indent}}$this->{{ step.method }}({{ step.args | implode true }});<template v-if="$index+1 < steps.length">{{linebreak}}</template></template><template v-if="step.custom">{{indent}}{{indent}}{{ step.action }};<template v-if="$index+1 < steps.length">{{linebreak}}</template></template>
 </template>
+        });
     }
 }
 </code>

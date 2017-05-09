@@ -35,7 +35,7 @@ var App = new Vue({
             });
           } else if (this.steps[this.steps.length-1].method === 'press') {
             this.steps.push({
-                'method': 'seePageIs',
+                'method': 'assertPathIs',
                 'args': [window.location.pathname]
             });
           }
@@ -47,7 +47,7 @@ var App = new Vue({
                 value   = $(this).val();
             self.steps.push({
                 'method': 'type',
-                'args': [value, name]
+                'args': [name, value]
             });
           }
         });
@@ -99,11 +99,10 @@ var App = new Vue({
                 value   = $(this).val();
             self.steps.push({
                 'method': 'select',
-                'args': [value, name]
+                'args': [name, value]
             });
           }
         });
-      }
     },
 
     watch: {
@@ -132,7 +131,7 @@ chrome.extension.onRequest.addListener(function(request) {
     var method = request.method || false;
     if(method === "seeText") {
         App.steps.push({
-          'method': 'see',
+          'method': 'assertSee',
           'args': [request.text]
         });
     }
@@ -154,7 +153,7 @@ chrome.extension.onRequest.addListener(function(request) {
     }
     if(method === "seePageIs") {
         App.steps.push({
-            'method': 'seePageIs',
+            'method': 'assertPathIs',
             'args': [window.location.pathname]
         });
     }
