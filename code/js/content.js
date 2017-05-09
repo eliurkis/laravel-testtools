@@ -103,6 +103,22 @@ var App = new Vue({
             });
           }
         });
+
+        if (typeof $.fn.chosen !== 'undefined') {
+          $('select').chosen().change(function () {
+            if (!self.recording) {
+              return;
+            }
+
+            var name = $(this).attr("name"),
+                value = $(this).val();
+            self.steps.push({
+                'method': 'selectChosen',
+                'args': [value, name]
+            });
+          });
+        }
+      }
     },
 
     watch: {
